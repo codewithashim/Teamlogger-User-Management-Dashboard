@@ -12,11 +12,16 @@
     "@ant-design/icons": "^5.3.6",
     "@tanstack/react-query": "^5.32.1",
     "antd": "^5.16.5",
+    "axios": "^1.6.8",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.2.0",
     "react-query": "^3.39.3",
     "sass": "^1.76.0",
+    "sweetalert2": "^11.10.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
