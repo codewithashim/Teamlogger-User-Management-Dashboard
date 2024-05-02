@@ -1,21 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { Input, Button } from "antd";
 import AddTaskModal from "../TaskComponents/AddTaskModal/AddTaskModal";
 import useTask from "@/src/Hooks/useTask";
 import Link from "next/link";
+
+const { Search } = Input;
 
 const AddTask = () => {
   const [taskOpen, setTaskOpen] = useState(false);
   const { tasksData, handelTaskDelete } = useTask();
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter tasks based on the search query
+  const filteredTasks = tasksData.filter((task) =>
+    task.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = (value) => {
+    setSearchQuery(value);
+  };
+
   return (
     <section className="w-[90%] mx-auto">
-      <div className="top-bar my-4">
+      <div className="top-bar flex gap-4 items-center md:flex-row flex-col my-4">
         <button className="common-btn" onClick={() => setTaskOpen(true)}>
           Add New Task
         </button>
+        <div>
+          <Search
+            placeholder="Search tasks"
+            allowClear
+            onSearch={handleSearch}
+            style={{ width: 500}}
+            className="p-4" 
+          />
+        </div>
       </div>
+
       <div className="divider"></div>
 
       <div className="task-component-container grid md:grid-cols-3 gap-6">
@@ -215,4 +239,3 @@ const AddTask = () => {
 };
 
 export default AddTask;
- 
