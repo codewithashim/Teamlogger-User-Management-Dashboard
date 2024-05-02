@@ -66,11 +66,17 @@ const Login = () => {
             <Input.Password placeholder="Password" className="w-full py-3 px-4 text-lg rounded" />
           </Form.Item>
 
+         
+          <div className="text-center flex gap-2">
           <Form.Item>
             <Button className="px-6 text-2xl pb-10" type="primary" htmlType="submit" loading={loading}>
               Log in
             </Button>
           </Form.Item>
+          <Button  className="px-6 text-2xl pb-10" type="primary" onClick={() => router.push("/auth/signup")}>
+            Sign up
+          </Button>
+        </div>
         </Form>
       </div>
     </section>

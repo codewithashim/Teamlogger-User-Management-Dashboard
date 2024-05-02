@@ -1,7 +1,20 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useAuthStore } from '@/src/store/authStore';
 import Head from "next/head";
+import DashboardPage from './dashboard';
+import LoginPage from './auth/login';
  
-
 export default function Home() {
+  const router = useRouter();
+  const { user } = useAuthStore();
+
+  useEffect(() => {
+    if (user === null) {
+      router.push('/auth/login');
+    }
+  }, [user, router]);
+
   return (
     <>
       <Head>
@@ -11,7 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Hello</h1>
+        {user === null ? <LoginPage /> : <DashboardPage />}
       </main>
     </>
   );
